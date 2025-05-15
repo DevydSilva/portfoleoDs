@@ -1,19 +1,17 @@
-function enviarWhats(event){
+// filepath: c:\Users\Devyd silva\Documents\GitHub\portfoleoDs\script.js
+function enviarWhats(event) {
+    event.preventDefault();
 
-    event.preventDefault(); // Impede o envio do formulário padrão
-
-    const nome = document.getElementById("nome");
-    const mensagem = document.getElementById("Mensagem");
+    const nome = document.getElementById("nome").value;
+    const mensagem = document.getElementById("mensagem").value;
     const telefone = '5581995566408';
 
-    const texto = `Olá, Me chamo ${nome.value} e gostaria de saber mais sobre o serviço. Mensagem: ${mensagem.value}`;
+    const texto = `Olá, Me chamo ${nome} e gostaria de saber mais sobre o serviço. Mensagem: ${mensagem}`;
     const msgFormatada = encodeURIComponent(texto);
 
-    console.log(url);
+    const whatsappUrl = `https://wa.me/${telefone}?text=${msgFormatada}`;
 
-    const url = `https://wa.me/qr/${telefone}/?t=${msgFormatada}`;
+    console.log(whatsappUrl);
 
-    window.open(url, '_blank');
+    window.open(whatsappUrl, '_blank');
 }
-
-
