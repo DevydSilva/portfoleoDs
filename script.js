@@ -2,16 +2,26 @@
 function enviarWhats(event) {
     event.preventDefault();
 
-    const nome = document.getElementById("nome").value;
-    const mensagem = document.getElementById("mensagem").value;
-    const telefone = '5581995566408';
+    try {
+        const nome = document.getElementById("nome").value;
+        const mensagem = document.getElementById("mensagem").value;
+        const telefone = '5581995566408';
 
-    const texto = `Olá, Me chamo ${nome} e gostaria de saber mais sobre o serviço. Mensagem: ${mensagem}`;
-    const msgFormatada = encodeURIComponent(texto);
+        if (!nome || !mensagem) {
+            alert('Por favor, preencha todos os campos!');
+            return;
+        }
 
-    const whatsappUrl = `https://wa.me/${telefone}?text=${msgFormatada}`;
+        const texto = `Olá, me chamo ${nome} e gostaria de saber mais sobre o serviço.\n\nMensagem: ${mensagem}`;
+        const msgFormatada = encodeURIComponent(texto);
 
-    console.log(whatsappUrl);
+        const whatsappUrl = `https://wa.me/${telefone}?text=${msgFormatada}`;
 
-    window.open(whatsappUrl, '_blank');
+        console.log(whatsappUrl);
+
+        window.open(whatsappUrl, '_blank');
+    } catch (error) {
+        console.error('Erro ao enviar mensagem:', error);
+        alert('Ocorreu um erro ao tentar enviar a mensagem. Por favor, tente novamente.');
+    }
 }
