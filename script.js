@@ -9,6 +9,8 @@ function enviarWhats(event){
     const texto = `Olá, Me chamo ${nome.value} e gostaria de saber mais sobre o serviço. Mensagem: ${mensagem.value}`;
     const msgFormatada = encodeURIComponent(texto);
 
+    console.log(url);
+
     const url = `https://wa.me/qr/${telefone}/?t=${msgFormatada}`;
 
     window.open(url, '_blank');
